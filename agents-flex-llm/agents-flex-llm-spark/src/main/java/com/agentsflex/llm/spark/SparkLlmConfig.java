@@ -33,18 +33,22 @@ public class SparkLlmConfig extends LlmConfig {
         this.appId = appId;
     }
 
+    @Override
     public String getApiSecret() {
         return apiSecret;
     }
 
+    @Override
     public void setApiSecret(String apiSecret) {
         this.apiSecret = apiSecret;
     }
 
+    @Override
     public String getApiKey() {
         return apiKey;
     }
 
+    @Override
     public void setApiKey(String apiKey) {
         this.apiKey = apiKey;
     }

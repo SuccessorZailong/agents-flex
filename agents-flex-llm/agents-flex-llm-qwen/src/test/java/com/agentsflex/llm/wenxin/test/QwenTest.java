@@ -1,4 +1,4 @@
-package com.agentsflex.llm.qwen.test;
+package com.agentsflex.llm.wenxin.test;
 
 import com.agentsflex.llm.Llm;
 import com.agentsflex.llm.qwen.QwenLlm;
