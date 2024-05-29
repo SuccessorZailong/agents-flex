@@ -35,8 +35,8 @@ public class WenxinLlmUtil {
     public static AiMessageParser getAiMessageParser() {
         DefaultAiMessageParser aiMessageParser = new DefaultAiMessageParser();
         aiMessageParser.setContentPath("$.answer");
-        aiMessageParser.setStatusPath("$.content[0].event_status");
-        aiMessageParser.setStatusParser(content -> parseMessageStatus((String) content));
+        aiMessageParser.setStatusPath("$.is_completion");
+        aiMessageParser.setStatusParser(content -> parseMessageStatus((Boolean) content));
         return aiMessageParser;
     }
 
@@ -50,9 +50,9 @@ public class WenxinLlmUtil {
     }
 
 
-    public static MessageStatus parseMessageStatus(String status) {
+    public static MessageStatus parseMessageStatus(Boolean isCompletion) {
 
-        return "done".equals(status) ? MessageStatus.END : MessageStatus.MIDDLE;
+        return isCompletion ? MessageStatus.END : MessageStatus.MIDDLE;
     }
 
 

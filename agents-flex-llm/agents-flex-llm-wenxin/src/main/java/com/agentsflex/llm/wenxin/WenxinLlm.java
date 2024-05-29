@@ -103,7 +103,6 @@ public class WenxinLlm extends BaseLlm<WenxinLlmConfig> {
         String message = jsonObject.getString("message");
 
 
-
         AbstractBaseMessageResponse<M> messageResponse;
 
         if (prompt instanceof FunctionPrompt) {
@@ -128,25 +127,23 @@ public class WenxinLlm extends BaseLlm<WenxinLlmConfig> {
 
 
     @Override
-    public <R extends MessageResponse<M>, M extends AiMessage> void chatStream(Prompt<M> prompt, StreamResponseListener<R, M> listener, ChatOptions options) {
-       checkConversation();
+    public <R extends MessageResponse<M>, M extends AiMessage> void chatStream(Prompt<M> prompt,
+                                                                               StreamResponseListener<R, M> listener,
+                                                                               ChatOptions options) {
+        checkConversation();
         LlmClient llmClient = new SseClient();
-
         String payload = WenxinLlmUtil.promptChatStreamToPayload(prompt, config);
-
-        LlmClientListener clientListener = new BaseLlmClientListener(this, llmClient, listener, prompt, new DefaultAiMessageParser() {
-            int prevMessageLength = 0;
-
-            @Override
-            public AiMessage parse(JSONObject content) {
-                System.out.println(content.toJSONString());
-                AiMessage aiMessage = aiMessageParser.parse(content);
-                String messageContent = aiMessage.getContent();
-                aiMessage.setContent(messageContent.substring(prevMessageLength));
-                prevMessageLength = messageContent.length();
-                return aiMessage;
-            }
-        }, functionMessageParser);
+        LlmClientListener clientListener = new BaseLlmClientListener(this, llmClient, listener, prompt,
+            new DefaultAiMessageParser() {
+                @Override
+                public AiMessage parse(JSONObject content) {
+                    System.out.println(content.toJSONString());
+                    AiMessage aiMessage = aiMessageParser.parse(content);
+                    String messageContent = aiMessage.getContent();
+                    aiMessage.setContent(messageContent);
+                    return aiMessage;
+                }
+            }, functionMessageParser);
 
         String endpoint = config.getEndpoint();
         llmClient.start(endpoint + WenxinLlmConfig.NEW_CONVERSATION_RUN_API, headers, payload, clientListener, config);

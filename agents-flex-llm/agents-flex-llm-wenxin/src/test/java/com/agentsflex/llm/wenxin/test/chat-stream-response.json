@@ -1,0 +1,22 @@
+{
+    "date": "2024-05-29T06:14:33Z",
+    "answer": "祝福\n\n作为十二生肖之一的牛，在传统文化中象征着勤劳、踏实和稳重。",
+    "conversation_id": "34c6a1f5-2b44-4055-b2ee-8769d10fecc1",
+    "is_completion": false,
+    "message_id": "29de2318-1762-4c3d-a67e-38114423390c",
+    "request_id": "f12bcdbc-ab8e-48a3-819c-cb1204abf660",
+    "content": [
+        {
+            "outputs": {
+                "text": "祝福\n\n作为十二生肖之一的牛，在传统文化中象征着勤劳、踏实和稳重。"
+            },
+            "event_type": "ChatAgent",
+            "event_id": "2",
+            "content_type": "text",
+            "visible_scope": "all",
+            "event_code": 0,
+            "event_message": "",
+            "event_status": "running"
+        }
+    ]
+}
