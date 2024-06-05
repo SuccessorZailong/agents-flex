@@ -10,8 +10,8 @@ public class WenxinTest {
 
     public static void main(String[] args) throws InterruptedException {
         WenxinLlmConfig config = new WenxinLlmConfig();
-        config.setAppId("753e8253-e7c2-4c88-aaf4-426225d49b6f");
-        config.setApiSecret("bce-v3/ALTAK-Q9ddySbqufKiYK0oy0LMj/f0c5d9ebc790d78fd5bd5e44aaf154cd4d6d804d");
+        config.setAppId("753e8253-e7c2--aaf4-426225d49b6f");
+        config.setApiSecret("bce-v3/ALTAK-/f0c5d9ebc790d78fd5bd5e44aaf154cd4d6d804d");
 
 
         config.setDebug(true);
